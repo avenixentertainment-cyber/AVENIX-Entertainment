@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVENIX Entertainment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Cairo",sans-serif;background:linear-gradient(to bottom,rgba(218,245,255,.96) 0%,rgba(238,251,255,.98) 42%,rgba(239,250,235,1) 72%,rgba(205,235,190,1) 100%);color:#29464b;min-height:100vh;overflow-x:hidden}
+    .sky{position:fixed;inset:0;z-index:-5;pointer-events:none;background:radial-gradient(circle at 15% 15%,rgba(255,255,255,.9) 0 35px,transparent 36px),radial-gradient(circle at 80% 10%,rgba(255,255,255,.75) 0 45px,transparent 46px),linear-gradient(#ccefff,#eafaff 55%,#eef9e8)}
+    .cloud{position:fixed;z-index:-3;width:180px;height:55px;border-radius:50px;background:rgba(255,255,255,.68);filter:blur(1px);opacity:.8;animation:cloudMove 24s linear infinite}
+    .cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+    .cloud:before{width:75px;height:75px;left:30px;bottom:10px}
+    .cloud:after{width:95px;height:95px;right:25px;bottom:5px}
+    .cloud.one{top:12%;left:-220px}.cloud.two{top:27%;left:-350px;transform:scale(.7);animation-delay:8s}
+    @keyframes cloudMove{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 500px))}}
+    .leaf{position:fixed;z-index:-1;color:rgba(84,153,83,.22);font-size:80px;pointer-events:none}
+    .leaf.a{bottom:8%;left:-15px;transform:rotate(-25deg)}.leaf.b{top:38%;right:-15px;transform:rotate(25deg)}.leaf.c{top:65%;left:5px;font-size:55px;transform:rotate(20deg)}
+    .page{width:min(1050px,92%);margin:auto;padding-bottom:70px}
+    header{text-align:center;padding:55px 20px 35px}
+    .brand{direction:ltr;display:inline-block;font-family:"Nunito",sans-serif;font-size:clamp(38px,7vw,78px);font-weight:900;letter-spacing:2px;color:#a9e7fa;-webkit-text-stroke:1px rgba(37,69,78,.22);text-shadow:0 0 4px rgba(170,235,255,.8),0 0 12px rgba(130,220,250,.42),0 4px 12px rgba(45,85,92,.10)}
+    .brand-subtitle{direction:ltr;margin-top:4px;font-family:"Nunito",sans-serif;font-size:17px;font-weight:700;color:#609bab;letter-spacing:3px}
+    .welcome{margin-top:22px;font-size:clamp(22px,4vw,32px);font-weight:800;color:#3d737d}.welcome-en{direction:ltr;margin-top:4px;font-family:"Nunito",sans-serif;font-size:18px;font-weight:700;color:#6195a2}
+    .card{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:30px;padding:34px;margin-top:24px;box-shadow:0 15px 45px rgba(61,111,99,.10),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(12px)}
+    .section-title{font-size:28px;font-weight:800;color:#3c7774;margin-bottom:7px}.section-title-en{direction:ltr;text-align:left;font-family:"Nunito",sans-serif;font-size:18px;font-weight:800;color:#73a8a5;margin-bottom:20px}
+    p{line-height:2;font-size:16px;margin-bottom:10px}.english{direction:ltr;text-align:left;font-family:"Nunito",sans-serif;color:#62858b;line-height:1.8}
+    .note{margin-top:18px;padding:15px 18px;border-radius:18px;background:rgba(215,244,235,.65);color:#557b75;font-size:14px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{margin-bottom:5px}.field.full{grid-column:1/-1}
+    label{display:block;font-weight:700;color:#47756f;margin-bottom:8px}.label-en{direction:ltr;text-align:left;font-family:"Nunito",sans-serif;color:#78a29d;font-size:14px;margin-top:-5px;margin-bottom:8px}
+    input,textarea,select{width:100%;border:2px solid rgba(151,204,196,.38);background:rgba(255,255,255,.78);border-radius:17px;padding:14px 16px;outline:none;color:#355b60;font-family:inherit;font-size:15px;transition:.25s}
+    input:focus,textarea:focus,select:focus{border-color:#9dddec;box-shadow:0 0 0 4px rgba(157,221,236,.18)}textarea{min-height:130px;resize:vertical}
+    .choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice label{cursor:pointer;display:block;padding:10px 15px;border-radius:16px;background:rgba(255,255,255,.7);border:1.5px solid rgba(126,187,177,.35);transition:.25s;font-weight:600}
+    .choice label:hover{transform:translateY(-2px);border-color:#9bd8e5}.choice input:checked+label{background:#d9f4fa;border-color:#8fd6e7;color:#3c7c88;box-shadow:0 5px 15px rgba(91,180,201,.12)}
+    .upload-box{position:relative;border:2px dashed rgba(106,180,193,.45);background:rgba(236,250,252,.65);border-radius:22px;padding:30px 20px;text-align:center;cursor:pointer;transition:.25s}
+    .upload-box:hover{background:rgba(222,247,250,.9);transform:translateY(-2px)}.upload-icon{font-size:38px;margin-bottom:8px}.upload-text{font-weight:800;color:#4f8994}.upload-en{direction:ltr;font-family:"Nunito",sans-serif;color:#78a5ac;margin-top:3px}
+    #video{display:none}#fileName{margin-top:12px;font-size:13px;color:#4e807e}
+    .submit-area{text-align:center;margin-top:30px}.submit-btn{border:none;cursor:pointer;border-radius:22px;padding:15px 45px;font-family:"Cairo",sans-serif;font-size:18px;font-weight:800;color:#315c65;background:linear-gradient(135deg,#bdeef9,#cdeed7);box-shadow:0 10px 25px rgba(79,157,154,.17),0 0 15px rgba(173,231,246,.28);transition:.25s}
+    .submit-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(79,157,154,.22),0 0 20px rgba(173,231,246,.38)}.submit-en{direction:ltr;display:block;font-family:"Nunito",sans-serif;font-size:13px;margin-top:1px}
+    .requirements{list-style:none;margin-top:15px}.requirements li{position:relative;padding:12px 35px 12px 10px;line-height:1.8}.requirements li:before{content:"✦";position:absolute;right:5px;top:13px;color:#8bc7a5;font-size:18px}.req-en{display:block;direction:ltr;text-align:left;font-family:"Nunito",sans-serif;color:#708e91;margin-top:2px}
+    footer{text-align:center;padding:45px 10px 10px;color:#64877d;font-size:14px}footer strong{color:#6db0c1;font-family:"Nunito",sans-serif}
+    @media(max-width:700px){header{padding-top:38px}.brand{font-size:42px;letter-spacing:1px}.brand-subtitle{font-size:13px;letter-spacing:2px}.card{padding:23px 18px;border-radius:24px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section-title{font-size:23px}}
+  </style>
+</head>
+<body>
+<div class="sky"></div><div class="cloud one"></div><div class="cloud two"></div>
+<div class="leaf a">🌿</div><div class="leaf b">🌱</div><div class="leaf c">🍃</div>
+<main class="page">
+<header>
+  <div class="brand">AVENIX Entertainment</div>
+  <div class="brand-subtitle">ENTERTAINMENT</div>
+  <div class="welcome">مرحبًا بكم</div><div class="welcome-en">Welcome</div>
+</header>
+
+<section class="card">
+<h2 class="section-title">من نحن</h2><div class="section-title-en">About Us</div>
+<p>AVENIX Entertainment هي شركة ترفيهية تهتم باكتشاف المواهب وتطويرها ودعم الفنانين والفرق الفنية.</p>
+<p class="english">AVENIX Entertainment is an entertainment company focused on discovering, developing, and supporting talented artists and groups.</p>
+<div class="note">هذه المعلومات ليست إلزامية للقراءة، ولكن يُفضّل الاطلاع عليها.<br><span class="english">This information is not required to read, but it is recommended.</span></div>
+</section>
+
+<section class="card">
+<h2 class="section-title">التقديم</h2><div class="section-title-en">Audition</div>
+<p>نحن نبحث عن أشخاص موهوبين وطموحين يرغبون في تطوير أنفسهم وخوض تجربة احترافية في مجال الترفيه.</p>
+<p class="english">We are looking for talented and ambitious individuals who are eager to develop their skills and pursue opportunities in the entertainment industry.</p>
+</section>
+
+<section class="card">
+<h2 class="section-title">بيانات المتقدم</h2><div class="section-title-en">Applicant Information</div>
+<div class="form-grid">
+<div class="field"><label>الاسم الثنائي</label><div class="label-en">Full Name</div><input type="text" placeholder="اكتب اسمك هنا | Enter your name"></div>
+<div class="field"><label>البريد الإلكتروني</label><div class="label-en">Email Address</div><input type="email" placeholder="اكتب بريدك الإلكتروني | Enter your email" required></div>
+<div class="field"><label>تاريخ الميلاد</label><div class="label-en">Date of Birth</div><div style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;"><input type="text" inputmode="numeric" maxlength="2" placeholder="اليوم | DD" aria-label="اليوم"><input type="text" inputmode="numeric" maxlength="2" placeholder="الشهر | MM" aria-label="الشهر"><input type="text" inputmode="numeric" maxlength="4" placeholder="السنة | YYYY" aria-label="السنة"></div></div>
+<div class="field"><label>العمر</label><div class="label-en">Age</div><input type="number" min="11" placeholder="اكتب عمرك هنا | Enter your age"></div>
+
+<div class="field full"><label>الجنسية</label><div class="label-en">Nationality</div><p style="margin-bottom:5px;">اختر جنسيتك:</p><div class="english" style="margin-bottom:10px;">Select your nationality:</div>
+<div class="choices">
+<div class="choice"><input type="radio" name="nationality" id="eg"><label for="eg">🇪🇬 Egypt — مصر</label></div>
+<div class="choice"><input type="radio" name="nationality" id="sa"><label for="sa">🇸🇦 Saudi Arabia — السعودية</label></div>
+<div class="choice"><input type="radio" name="nationality" id="ae"><label for="ae">🇦🇪 United Arab Emirates — الإمارات</label></div>
+<div class="choice"><input type="radio" name="nationality" id="kw"><label for="kw">🇰🇼 Kuwait — الكويت</label></div>
+<div class="choice"><input type="radio" name="nationality" id="qa"><label for="qa">🇶🇦 Qatar — قطر</label></div>
+<div class="choice"><input type="radio" name="nationality" id="bh"><label for="bh">🇧🇭 Bahrain — البحرين</label></div>
+<div class="choice"><input type="radio" name="nationality" id="om"><label for="om">🇴🇲 Oman — عُمان</label></div>
+<div class="choice"><input type="radio" name="nationality" id="jo"><label for="jo">🇯🇴 Jordan — الأردن</label></div>
+<div class="choice"><input type="radio" name="nationality" id="lb"><label for="lb">🇱🇧 Lebanon — لبنان</label></div>
+<div class="choice"><input type="radio" name="nationality" id="iq"><label for="iq">🇮🇶 Iraq — العراق</label></div>
+<div class="choice"><input type="radio" name="nationality" id="sy"><label for="sy">🇸🇾 Syria — سوريا</label></div>
+<div class="choice"><input type="radio" name="nationality" id="ps"><label for="ps">🇵🇸 Palestine — فلسطين</label></div>
+<div class="choice"><input type="radio" name="nationality" id="ye"><label for="ye">🇾🇪 Yemen — اليمن</label></div>
+<div class="choice"><input type="radio" name="nationality" id="ma"><label for="ma">🇲🇦 Morocco — المغرب</label></div>
+<div class="choice"><input type="radio" name="nationality" id="dz"><label for="dz">🇩🇿 Algeria — الجزائر</label></div>
+<div class="choice"><input type="radio" name="nationality" id="tn"><label for="tn">🇹🇳 Tunisia — تونس</label></div>
+<div class="choice"><input type="radio" name="nationality" id="ly"><label for="ly">🇱🇾 Libya — ليبيا</label></div>
+<div class="choice"><input type="radio" name="nationality" id="sd"><label for="sd">🇸🇩 Sudan — السودان</label></div>
+<div class="choice"><input type="radio" name="nationality" id="so"><label for="so">🇸🇴 Somalia — الصومال</label></div>
+</div></div>
+
+<div class="field full"><label>الدولة</label><div class="label-en">Country</div><p>اختر الدولة التي تقيم فيها:</p><input type="text" placeholder="اكتب الدولة هنا | Enter your country"></div>
+<div class="field full"><label>اللغات</label><div class="label-en">Languages You Speak</div><input type="text" placeholder="اكتب اللغات التي تتحدث بها | Enter the languages you speak"></div>
+
+<div class="field full"><label>مستوى كل لغة</label><div class="label-en">Language Proficiency</div>
+<div class="choices">
+<div class="choice"><input type="radio" name="level" id="beginner"><label for="beginner">مبتدئ — Beginner</label></div>
+<div class="choice"><input type="radio" name="level" id="intermediate"><label for="intermediate">متوسط — Intermediate</label></div>
+<div class="choice"><input type="radio" name="level" id="advanced"><label for="advanced">متقدم — Advanced</label></div>
+<div class="choice"><input type="radio" name="level" id="fluent"><label for="fluent">بطلاقة — Fluent</label></div>
+<div class="choice"><input type="radio" name="level" id="native"><label for="native">اللغة الأم — Native</label></div>
+</div></div>
+
+<div class="field full"><label>مجال التخصص</label><div class="label-en">Area of Expertise</div><p>اختر مجالًا واحدًا أو أكثر:</p><div class="english">Select one or more areas:</div>
+<div class="choices">
+<div class="choice"><input type="checkbox" id="vocal"><label for="vocal">🎤 الغناء — Vocal</label></div>
+<div class="choice"><input type="checkbox" id="rap"><label for="rap">🎧 الراب — Rap</label></div>
+<div class="choice"><input type="checkbox" id="acting"><label for="acting">🎭 التمثيل — Acting</label></div>
+</div></div>
+
+<div class="field full"><label>تحميل فيديو الاختبار الصوتي</label><div class="label-en">Upload Audition Video</div>
+<label for="video" class="upload-box"><div class="upload-icon">🎬</div><div class="upload-text">اختر ملف الفيديو</div><div class="upload-en">Choose your video file</div><div id="fileName">لم يتم اختيار ملف بعد</div></label>
+<input id="video" type="file" accept="video/*"></div>
+
+<div class="field full"><label>لماذا ترغب في الانضمام إلى AVENIX Entertainment؟</label><div class="label-en">Why do you want to join AVENIX Entertainment?</div><textarea placeholder="اكتب إجابتك هنا | Write your answer here"></textarea></div>
+
+<div class="field full"><label>هل سبق لك الانضمام إلى شركة أو فرقة فنية أخرى؟</label><div class="label-en">Have you previously been part of another entertainment company or group?</div>
+<div class="choices"><div class="choice"><input type="radio" name="previous" id="yes"><label for="yes">نعم — Yes</label></div><div class="choice"><input type="radio" name="previous" id="no"><label for="no">لا — No</label></div></div></div>
+</div>
+
+<div class="submit-area"><button class="submit-btn" type="button" onclick="submitApplication()">إرسال الطلب<span class="submit-en">Submit Application</span></button></div>
+</section>
+
+<section class="card">
+<h2 class="section-title">متطلبات التقديم</h2><div class="section-title-en">Application Requirements</div>
+<ul class="requirements">
+<li>يجب أن يكون عمر المتقدم أكثر من 10 أعوام.<span class="req-en">Applicants must be over 10 years old.</span></li>
+<li>يجب تقديم معلومات صحيحة ودقيقة في استمارة التقديم.<span class="req-en">Applicants must provide accurate and truthful information in the application form.</span></li>
+<li>يجب أن تكون جميع المعلومات والملفات المقدمة خاصة بالمتقدم نفسه.<span class="req-en">All submitted information and files must belong to the applicant.</span></li>
+<li>يجب الالتزام بتعليمات الشركة أثناء عملية التقديم.<span class="req-en">Applicants must follow the company’s guidelines throughout the application process.</span></li>
+</ul>
+</section>
+
+<footer><strong>AVENIX Entertainment</strong><br>Discover • Develop • Shine ✨</footer>
+</main>
+
+<script>
+const videoInput=document.getElementById("video");
+const fileName=document.getElementById("fileName");
+videoInput.addEventListener("change",function(){
+  fileName.textContent=this.files.length>0?"تم اختيار: "+this.files[0].name:"لم يتم اختيار ملف بعد";
+});
+function submitApplication(){
+  alert("تم تجهيز طلبك للتقديم 💙\n\nملاحظة: الموقع حاليًا واجهة تجريبية، ولإرسال الطلبات فعليًا نحتاج ربطه بقاعدة بيانات أو خدمة استقبال.");
+}
+</script>
+</body>
+</html>
